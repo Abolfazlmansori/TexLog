@@ -1,7 +1,6 @@
 # 📝 TexLog - A Custom PHP MVC Blog Engine
 
 [🌐 Switch to Persian Version (فارسی)](README_FA.md)
-# 📝 TexLog - A Custom PHP MVC Blog Engine
 
 ![PHP Version](https://img.shields.io/badge/php-%3E%3D8.0-blue.svg)
 ![Architecture](https://img.shields.io/badge/Architecture-MVC-green.svg)

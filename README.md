@@ -78,16 +78,3 @@ Contributions are welcome! If you’d like to improve TexLog, feel free to fork 
 Distributed under the MIT License. See LICENSE for more information.
 
 Developed with ❤️ by Abolfazl Mansori
-
-                                                                    text
-
----
-
-### چند نکته برای بهتر شدن README شما:
-
-1.  **بخش Prerequisites:** اگر از دیتابیس (مثل MySQL) استفاده می‌کنید، حتماً در بخش نصب (Installation) بنویسید که کاربر باید ابتدا دیتابیس را بسازد و فایل `.sql` شما را وارد کند.
-2.  **تصویر (Screenshot):** یکی از بهترین کارها برای جذب مخاطب در گیت‌هاب این است که یک اسکرین‌شات از ظاهر وبلاگ خود بگیرید و در ابتدای فایل قرار دهید.
-*   روش کار: یک عکس در پوشه‌ای به نام `screenshots` قرار دهید و با کد `![Alt Text](screenshots/home.png)` آن را نمایش دهید.
-3.  **بخش License:** اگر می‌خواهید پروژه کاملاً آزاد باشد، یک فایل به نام `LICENSE` بسازید و محتوای لایسنس MIT را در آن قرار دهید (این کار بسیار حرفه‌ای است).
-
-**آیا می‌خواهید بخش خاصی (مثلاً مربوط به دیتابیس یا نحوه کارکرد روتِر) را به صورت دقیق‌تر به این متن اضافه کنم؟**

@@ -27,20 +27,20 @@
     <article>
       <header class="mb-10 pb-6 border-b border-slate-800/40">
         <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 mb-4 font-mono">
-          <time datetime="2026-07-02"><?= $created_at ?? '۱۲ تیر ۱۴۰۵' ?></time>
+              <time datetime="966"><?= \Morilog\Jalali\Jalalian::fromDateTime($postsone['created_at'])->format('%d %B، %Y') ?? '۱۱ تیر ۱۴۰۵' ?></time>
           <span>•</span>
-          <span class="text-indigo-400/80 bg-indigo-500/10 px-2 py-0.5 rounded"><?= $postsone['category'] ?></span>
+          <span class="text-indigo-400/80 bg-indigo-500/10 px-2 py-0.5 rounded"><?= $postsone['category'] ?? 'برنامه نویسی' ?></span>
           <span>•</span>
-          <span class="text-slate-400"><?= $postsone['read_time'] ?> دقیقه مطالعه</span>
+          <span class="text-slate-400"><?= $postsone['read_time'] ?? '۱۲' ?> دقیقه مطالعه</span>
         </div>
         
         <h1 class="text-3xl font-extrabold text-white leading-tight mb-4">
-          <?= $postsone['title'] ?>
+          <?= $postsone['title'] ?? 'ساخت کنترلر در لاراول' ?>
         </h1>
       </header>
 
       <div class="text-slate-300 text-sm leading-8 space-y-6 text-justify whitespace-pre-line">
-        <?= $postsone['content']  ?>
+        <?= $postsone['content'] ?? 'برای ساخت کنتلر از دستور php artisan make:controller ....'  ?>
       </div>
     </article>
 

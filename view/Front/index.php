@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texlog | وبلاگ متنی من</title>
+  <title>Texlog</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -36,7 +36,7 @@
         <?php foreach($posts as $post): ?>
           <article class="post-card group relative flex flex-col items-start bg-slate-900/30 border border-slate-800/50 rounded-3xl p-8 hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300">
             <div class="flex items-center gap-3 text-xs text-slate-500 mb-4 font-mono">
-              <time datetime="<?= $post['created_at'] ?? '2026-07-01' ?>"><?= $post['created_at'] ?? '۱۱ تیر ۱۴۰۵' ?></time>
+              <time datetime="966"><?= \Morilog\Jalali\Jalalian::fromDateTime($post['created_at'])->format('%d %B، %Y') ?? '۱۱ تیر ۱۴۰۵' ?></time>
               <span class="text-slate-700">|</span>
               <span class="text-indigo-400/90 bg-indigo-500/10 px-2.5 py-0.5 rounded-lg border border-indigo-500/10">
                 <?= htmlspecialchars($post['category'] ?? 'General') ?>

@@ -16,6 +16,7 @@ Router::get('/', [HomeController::class, 'index']);
 //AuthRouter
 Router::get('/Login',[LoginController::class,'index']);
 Router::get('/Register',[RegisterController::class,'index']);
+Router::post('/Register/store',[RegisterController::class,'store']);
 
 // PostRouter
 Router::get('/post/create', [PostController::class, 'index']);

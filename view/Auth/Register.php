@@ -43,7 +43,7 @@
                 <!-- Full Name -->
                 <div>
                     <label class="block text-sm font-medium text-slate-400 mb-2">نام و نام خانوادگی</label>
-                    <input type="text" name="fullname" 
+                    <input type="text" name="fullname" required 
                         class="w-full bg-slate-900/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all"
                         placeholder="نام شما">
                 </div>

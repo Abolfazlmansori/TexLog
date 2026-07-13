@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Config\Router;
@@ -15,8 +16,10 @@ Router::get('/', [HomeController::class, 'index']);
 
 //AuthRouter
 Router::get('/Login',[LoginController::class,'index']);
+Router::post("/Login/store",[LoginController::class,'store']);
 Router::get('/Register',[RegisterController::class,'index']);
 Router::post('/Register/store',[RegisterController::class,'store']);
+Router::post('/Logout',[LoginController::class,'logout']);
 
 // PostRouter
 Router::get('/post/create', [PostController::class, 'index']);

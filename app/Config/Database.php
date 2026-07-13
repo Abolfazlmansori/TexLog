@@ -17,15 +17,15 @@ class Database
             $host = '127.0.0.1';
             $db   = 'texlog';
             $user = 'root';
-            $pass = ''; 
+            $pass = '';
             $charset = 'utf8mb4';
 
             $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    
+
             $options = [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // پرتاب Exception در صورت بروز خطای SQL
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // دریافت داده‌ها به صورت آرایه کلید و مقدار
-                PDO::ATTR_EMULATE_PREPARES   => false,                  // استفاده از Prepared Statements واقعی برای امنیت بالا ضد SQL Injection
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, 
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,      
+                PDO::ATTR_EMULATE_PREPARES   => false,                
             ];
 
             try {
@@ -38,9 +38,9 @@ class Database
         return self::$connection;
     }
 
-    public static function Insert_Into(string $table,string $filed,array $data,$num)
+    public static function Insert_Into(string $table, string $filed, array $data, $num)
     {
-        $placeholder = str_repeat('?,',$num - 1) . '?';
+        $placeholder = str_repeat('?,', $num - 1) . '?';
         $sql = "INSERT INTO $table ( $filed ) VALUES ($placeholder)";
         $stmt = self::$connection->prepare($sql);
         $stmt->execute($data);
@@ -53,7 +53,22 @@ class Database
         return  $stmt->fetchAll();
     }
 
-    public static function SelectOne(string $table,$id)
+
+    public static function SelectByEmail(string $table, string $email): array|false
+    {
+        $sql = "SELECT * FROM `$table` WHERE email = ?";
+
+        try {
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute([$email]);
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public static function SelectOne(string $table, $id)
     {
         $sql = "SELECT * FROM $table WHERE id=?";
         $stmt = self::$connection->prepare($sql);

@@ -26,7 +26,9 @@ class LoginController extends Controller
                 if ($user && $verifyPass) {
 
                     try {
+                        session_regenerate_id(true);
                         $_SESSION['user'] = $user;
+                        $_SESSION['last_activity'] = time();
                         header("location:/TexLog");
                         exit;
                     } catch (Exception $e) {
@@ -45,8 +47,15 @@ class LoginController extends Controller
 
     public function logout()
 {
-    $_SESSION = [];
-    session_destroy();
+        $_SESSION = [];
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        session_destroy();
     header("Location: /TexLog");
     exit;
 }

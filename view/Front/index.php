@@ -25,12 +25,22 @@
     </section>
 
     <section class="space-y-10">
-      <div class="flex items-center gap-4 mb-8">
-        <h2 class="text-sm font-bold tracking-[0.2em] text-slate-500 uppercase flex items-center gap-3">
-          <span class="w-8 h-[1px] bg-slate-800"></span>
-          آخرین نوشته‌ها
-        </h2>
-      </div>
+<div class="flex items-center justify-between mb-8">
+    <!-- بخش عنوان که خودتان نوشتید (با کمی تغییر برای هماهنگی) -->
+    <h2 class="text-sm font-bold tracking-[0.2em] text-slate-500 uppercase flex items-center gap-3">
+        <span class="w-8 h-[1px] bg-slate-800"></span>
+        آخرین نوشته‌ها
+    </h2>
+
+    <!-- بخش مرتب‌سازی -->
+    <div class="flex items-center gap-2">
+        <span class="text-xs text-slate-400 mr-2">مرتب سازی:</span>
+        <a href="/TexLog/posts/newest" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors duration-300">جدیدترین</a>
+        <span class="text-slate-300">|</span>
+        <a href="/TexLog/posts/oldest" class="text-xs font-medium text-slate-600 hover:text-slate-900 transition-colors duration-300">قدیمی‌ترین</a>
+    </div>
+</div>
+
 
       <?php if (!empty($posts)): ?>
         <?php foreach($posts as $post): ?>

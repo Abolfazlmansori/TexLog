@@ -23,9 +23,9 @@ class Database
             $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
             $options = [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, 
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,      
-                PDO::ATTR_EMULATE_PREPARES   => false,                
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES   => false,
             ];
 
             try {
@@ -46,12 +46,42 @@ class Database
         $stmt->execute($data);
     }
 
+    public static function Update(string $table, array $data, int $id)
+    {
+        $sets = [];
+        foreach ($data as $key => $value) {
+            $sets[] = "$key = ?";
+        }
+        $setSql = implode(', ', $sets);
+        $sql = "UPDATE $table SET $setSql WHERE id = ?";
+
+        $stmt = self::$connection->prepare($sql);
+
+        $values = array_values($data);
+        $values[] = $id;
+
+        $stmt->execute($values);
+    }
+
+
     public static function Select(string $table)
     {
         $sql = "SELECT * FROM $table";
         $stmt = self::$connection->query($sql);
         return  $stmt->fetchAll();
     }
+
+public static function SelectOrder(string $table, string $column, string $direction): array|false
+{
+    $sql = "SELECT * FROM `$table` ORDER BY `$column` $direction";
+    try {
+        $stmt = self::$connection->prepare($sql);
+        $stmt->execute(); 
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    } catch (PDOException $e) {
+        return false;
+    }
+}
 
 
     public static function SelectByEmail(string $table, string $email): array|false

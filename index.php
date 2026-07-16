@@ -1,4 +1,6 @@
 <?php
+
+
 session_set_cookie_params([
     'lifetime' => 0,
     'path' => '/',
@@ -38,9 +40,13 @@ Router::post('/Register/store',[RegisterController::class,'store']);
 Router::post('/Logout',[LoginController::class,'logout']);
 
 // PostRouter
+Router::get('/posts/{order}',[HomeController::class,'selectBy']);
+Router::get('/posts/{order}',[HomeController::class,'selectBy']);
 Router::get('/post/create', [PostController::class, 'index']);
 Router::post('/post/store',[PostController::class,'store']);
 Router::get('/post/{id}', [PostController::class, 'show']);
+Router::get('/post/edit/{id}',[PostController::class,'edit']);
+Router::post('/post/update/{id}',[PostController::class,'update']);
 
 
 

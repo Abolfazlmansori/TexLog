@@ -2,7 +2,7 @@
 
 namespace App\Middleware;
 class AuthMiddleware {
-    private $session_timeout = 3600;
+    private $session_timeout = 5;
 
     public function __construct() {
         if (session_status() === PHP_SESSION_NONE) {
@@ -39,7 +39,7 @@ class AuthMiddleware {
     private function checkTimeout() {
         if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $this->session_timeout) {
             $this->logout();
-            header("Location: /Login.php?error=timeout");
+            header("Location: /TexLog/Login");
             exit();
         }
         $_SESSION['last_activity'] = time();
